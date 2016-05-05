@@ -1,0 +1,11 @@
+.timing, .cover-art, .controls {
+    margin-bottom: 10px;
+}
+
+body {
+  font-family: 'Cinzel Decorative', cursive;
+}
+
+.timing span {
+    font-size: 23px;
+}

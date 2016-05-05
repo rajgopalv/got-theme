@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="game-of-thrones">
+<head>
+  <meta property="og:image" content="http://s-media-cache-ak0.pinimg.com/600x315/59/5d/88/595d88a27c5ec1dea2406ec2cf3516b0.jpg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Band.JS Files -->
+    <script src="//cdn.rawgit.com/meenie/band.js/1.1.2/dist/band.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700,900' rel='stylesheet' type='text/css'>
+    <title>Game Of Thrones Theme - Javascrit Cover</title>
+    <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">-->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
+    <!--<script src="http://code.angularjs.org/1.2.0rc1/angular.min.js"></script>-->
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.5.0/ui-bootstrap-tpls.min.js"></script>-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+    <script src="app.js"></script>
+
+    <!-- adding  css files -->
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css"
+          rel="stylesheet">
+    <link href="app.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+
+    <!-- App Files -->
+    <script src="app.js"></script>
+</head>
+<body ng-controller="AppController">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h3><strong>Game Of Thrones Theme - Javascrit Cover</strong></h3>
+        </div>
+    </div>
+    <div class="row" ng-cloak>
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="row timing">
+                <div class="col-xs-12 text-center">
+                    <span class="music-time">{{currentSeconds|musicTime}}</span>
+                    <input ng-mousedown="movingTime()" ng-mouseup="updateTime()" type="range" max="{{totalSeconds}}"
+                           ng-model="currentSeconds">
+                    <span class="music-time">{{totalSeconds|musicTime}}</span>
+                </div>
+            </div>
+            <div class="row cover-art">
+                <div class="col-xs-12 text-center">
+                    <div ng-controller="CarouselCtrl">
+                        <div class="">
+                            <carousel interval="myInterval">
+                                <slide ng-repeat="slide in slides" active="slide.active">
+                                    <img class="img-responsive img" ng-src="{{slide.image}}"
+                                         style="margin:auto; height: 300px"/>
+                                </slide>
+                            </carousel>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row controls">
+            <div class="col-xs-12 text-center">
+                <div class="btn-group">
+                    <button ng-if="! playing || paused" ng-click="play()" class="btn btn-default"><i
+                            class="fa fa-play"></i></button>
+                    <button ng-if="! paused && playing" ng-click="pause()" class="btn btn-default"><i
+                            class="fa fa-pause"></i></button>
+                    <button ng-click="stop()" class="btn btn-default"><i class="fa fa-stop"></i></button>
+                    <button class="btn btn-default" ng-model="mute" btn-checkbox><i class="fa fa-volume-off"></i>
+                    </button>
+                    <button class="btn btn-default" ng-model="loop" btn-checkbox><i class="fa fa-repeat"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="row volume">
+            <div class="col-xs-12 text-center">
+                <label for="update-volume">Volume: {{volume}}</label><br>
+                <input id="update-volume" ng-disabled="muted" type="range" ng-model="volume">
+            </div>
+        </div>
+        <!--<div class="row tempo">-->
+        <!--<div class="col-xs-12 text-center">-->
+        <!--<label for="update-tempo">Tempo: {{tempo}}</label><br>-->
+        <!--<input id="update-tempo" type="range" min="30" max="300" ng-model="tempo" ng-mouseup="updateTempo()">-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 text-center">
+        <h5>Created by <a href="https://github.com/rajgopalv" target="_blank">Rajgopal Vaithiyanathan</a> using <a
+                href="https://github.com/meenie/band.js" target="_blank">Band.js</a></h5>
+        <h6>Only works in AudioContext enabled browsers!</h6>
+        <small> Image credits <a target="_blank" href="http://pixeljoint.com/p/45353.htm">Czarek Łuczyński</a></small>
+    </div>
+</div>
+</div>
+<div class="text-right">
+<img src="http://s-media-cache-ak0.pinimg.com/600x315/59/5d/88/595d88a27c5ec1dea2406ec2cf3516b0.jpg" style="height:1px"/>
+</div>
+</body>
+</html>
